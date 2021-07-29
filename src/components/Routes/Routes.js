@@ -4,11 +4,11 @@ import { Route, Switch } from "react-router-dom";
 
 import Home from "../views/Home/Home";
 import Portal from "../interface/Portal/Portal";
-import FourOhFour from "../FourOhFour";
+import FourOhFour from "../views/FourOhFour";
 
 const Routes = ({ open }) => {
   const renderer = (Component, props) => {
-    return <Portal props={props} Component={Component} open={open} />;
+    return <Portal {...{ Component, open, props }} />;
   };
 
   return (
