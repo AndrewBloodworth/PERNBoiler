@@ -23,8 +23,14 @@ User.beforeCreate(async (user) => {
 
 User.byToken = async (token) => {
   try {
-    console.log(token, process.env.JWTSecret);
-    const data = JWT.verify(token, process.env.JWTSecret);
+    console.log(
+      token,
+      process.env.MySuperFakeObviouslyNotSupposedToBeHereSecret
+    );
+    const data = JWT.verify(
+      token,
+      process.env.MySuperFakeObviouslyNotSupposedToBeHereSecret
+    );
     const user = await User.findByPk(data.userId);
     if (user) {
       return user;
@@ -46,7 +52,11 @@ User.authenticate = async ({ username, password }) => {
     },
   });
   if (await verifyLogin(password, user.password)) {
-    const token = JWT.sign({ userId: user.id }, process.env.JWTSecret);
+    const token = JWT.sign(
+      { userId: user.id },
+      process.env.MySuperFakeObviouslyNotSupposedToBeHereSecret
+    );
+
     return token;
   }
   const error = Error("bad credentials");
