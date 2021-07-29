@@ -14,14 +14,16 @@ router.post("/", async (req, res, next) => {
   try {
     const token = await User.authenticate(req.body);
     let cookie = req.cookies.token;
-    if (cookie === undefined) {
-      //, httpOnly: true
-      //24hr X 60min X 60min X 100ms = 8,640,000ms
-      res.cookie("token", token, { maxAge: 8640000 });
-      console.log("cookie created successfully");
-    } else {
-      console.log("cookie exists", cookie);
-    }
+    res.cookie("token", token, { maxAge: 8640000 });
+    console.log("cookie created successfully");
+    // if (cookie === undefined) {
+    //   //, httpOnly: true
+    //   //24hr X 60min X 60min X 100ms = 8,640,000ms
+    //   res.cookie("token", token, { maxAge: 8640000 });
+    //   console.log("cookie created successfully");
+    // } else {
+    //   console.log("cookie exists", cookie);
+    // }
     res.sendStatus(201);
   } catch (ex) {
     next(ex);

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { StyledMain } from "./Main.styled";
-import Routes from "../Routes/Routes";
+import Routes from "../routes/Routes";
 import Nav from "../interface/Nav/Nav";
 import Burger from "../utils/Burger/Burger";
 import Menu from "../views/Menu/Menu";
