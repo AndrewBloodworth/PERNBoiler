@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { StyledNav } from "./Nav.styled";
 
-const Nav = ({ toLoad, setToLoad }) => {
+const Nav = () => {
   return <StyledNav></StyledNav>;
 };
 

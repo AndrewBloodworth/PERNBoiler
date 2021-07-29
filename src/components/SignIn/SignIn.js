@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { StyledSignIn } from "./SignIn.styled";

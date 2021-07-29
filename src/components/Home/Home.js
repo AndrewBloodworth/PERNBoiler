@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import React from "react";
 import { connect } from "react-redux";
 import { resetToken } from "../../redux/auth";
 import { StyledHome } from "./Home.styled";
-import axios from "axios";
-import SignIn from "../SignIn/SignIn";
 
 export const Home = ({ auth, logout }) => {
   return (
