@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { fetchAuth, fetchToken } from "../../redux/auth";
-import Loading from "../Loading";
-import SignIn from "../SignIn/SignIn";
+import { fetchAuth, fetchToken } from "../../../redux/auth";
+import Loading from "../../views/Loading";
+import SignIn from "../../views/SignIn/SignIn";
 import { StyledPortal } from "./Portal.styled";
 
 export const Portal = ({

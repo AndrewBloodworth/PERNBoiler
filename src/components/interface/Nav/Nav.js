@@ -2,7 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { StyledNav } from "./Nav.styled";
-import Image from "../ImageComponent";
+import Image from "../../utils/ImageComponent/Image";
 
 const Nav = () => {
   return (

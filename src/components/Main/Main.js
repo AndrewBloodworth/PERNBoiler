@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { StyledMain } from "./Main.styled";
 import Routes from "../Routes/Routes";
-import Nav from "../Nav/Nav";
-import Burger from "../Burger/Burger";
-import Menu from "../Menu/Menu";
-import Footer from "../Footer/Footer";
+import Nav from "../structure/Nav/Nav";
+import Burger from "../utils/Burger/Burger";
+import Menu from "../views/Menu/Menu";
+import Footer from "../structure/Footer/Footer";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-const Main = (props) => {
+const Main = () => {
   const [open, setOpen] = useState(false);
   return (
     <StyledMain>

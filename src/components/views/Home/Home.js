@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { connect } from "react-redux";
-import { resetToken } from "../../redux/auth";
+import { resetToken } from "../../../redux/auth";
 import { StyledHome } from "./Home.styled";
 
 export const Home = ({ auth, logout, open }) => {
