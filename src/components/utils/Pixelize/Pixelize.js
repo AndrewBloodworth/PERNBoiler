@@ -1,15 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StyledPixelize } from "./Pixelize.styled";
 import particleAlphabet from "./particleAlphabet";
 
-const Image = ({ url, size, logo }) => {
+const Pixelize = () => {
+  const [keyword, setKeyword] = useState(() => {});
+  const [size, setSize] = useState({ width: 100, height: 100 });
   useEffect(() => {
-    particleAlphabet.init();
+    const { width, height } = size;
+    setKeyword(particleAlphabet.init(width, height, 1, 0.1));
   }, []);
   return (
-    <StyledPixelize url={url} size={size} logo={logo}>
+    <StyledPixelize size={size}>
+      <input type="text" onChange={({ target }) => keyword(target.value)} />
       <canvas></canvas>
     </StyledPixelize>
   );
@@ -19,4 +23,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Image);
+export default connect(mapStateToProps, mapDispatchToProps)(Pixelize);
