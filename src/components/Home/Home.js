@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { resetToken } from "../../redux/auth";
 import { StyledHome } from "./Home.styled";
 
-export const Home = ({ auth, logout }) => {
+export const Home = ({ auth, logout, open }) => {
   return (
-    <StyledHome>
+    <StyledHome open={open}>
       Welcome {auth.username}
       <button onClick={() => logout()}>Logout</button>
     </StyledHome>

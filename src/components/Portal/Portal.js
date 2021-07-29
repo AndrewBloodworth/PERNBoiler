@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchAuth, fetchToken } from "../../redux/auth";
+import Loading from "../Loading";
 import SignIn from "../SignIn/SignIn";
 import { StyledPortal } from "./Portal.styled";
 
@@ -10,9 +11,9 @@ export const Portal = ({
   props,
   auth,
   loggedIn,
+  preCheck,
   getAuth,
   getToken,
-  preCheck,
 }) => {
   useEffect(() => {
     getAuth();
@@ -26,7 +27,7 @@ export const Portal = ({
     <StyledPortal>
       <main id="main-portal">
         {!preCheck ? (
-          <h1>Loading...</h1>
+          <Loading />
         ) : !auth.id ? (
           <SignIn signIn={signIn} />
         ) : (

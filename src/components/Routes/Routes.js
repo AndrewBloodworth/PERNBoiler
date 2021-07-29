@@ -6,9 +6,9 @@ import Home from "../Home/Home";
 import Portal from "../Portal/Portal";
 import FourOhFour from "../FourOhFour";
 
-const Routes = () => {
+const Routes = ({ open }) => {
   const renderer = (Component, props) => {
-    return <Portal props={props} Component={Component} />;
+    return <Portal props={props} Component={Component} open={open} />;
   };
 
   return (
