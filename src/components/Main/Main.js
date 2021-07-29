@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { StyledMain } from "./Main.styled";
 import Routes from "../Routes/Routes";
-import Nav from "../structure/Nav/Nav";
+import Nav from "../interface/Nav/Nav";
 import Burger from "../utils/Burger/Burger";
 import Menu from "../views/Menu/Menu";
-import Footer from "../structure/Footer/Footer";
+import Footer from "../interface/Footer/Footer";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Main = () => {
