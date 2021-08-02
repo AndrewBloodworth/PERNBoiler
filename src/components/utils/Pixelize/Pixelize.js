@@ -4,16 +4,19 @@ import { connect } from "react-redux";
 import { StyledPixelize } from "./Pixelize.styled";
 import particleAlphabet from "./particleAlphabet";
 
-const Pixelize = () => {
-  const [keyword, setKeyword] = useState(() => {});
-  const [size, setSize] = useState({ width: 100, height: 100 });
+const Pixelize = ({ username, width, height, radius, speed }) => {
+  const [keyword, setKeyword] = useState(null);
+
   useEffect(() => {
-    const { width, height } = size;
-    setKeyword(particleAlphabet.init(width, height, 1, 0.1));
-  }, []);
+    if (!keyword) {
+      const keyword = particleAlphabet.init(width, height, radius, speed);
+      setKeyword(keyword);
+    } else {
+      keyword(username);
+    }
+  }, [keyword]);
   return (
-    <StyledPixelize size={size}>
-      <input type="text" onChange={({ target }) => keyword(target.value)} />
+    <StyledPixelize size={{ width, height }}>
       <canvas></canvas>
     </StyledPixelize>
   );

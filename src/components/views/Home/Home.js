@@ -8,9 +8,19 @@ import { StyledHome } from "./Home.styled";
 export const Home = ({ auth, logout, open }) => {
   return (
     <StyledHome open={open}>
-      <h1>Welcome {auth.username}</h1>
-      <Pixelize />
-      <button onClick={() => logout()}>Logout</button>
+      <header>
+        <h1>{auth.username}</h1>
+        <button onClick={() => logout()}>Logout</button>
+      </header>
+      <Pixelize
+        {...{
+          username: `${auth.username}`,
+          width: 1150,
+          height: 400,
+          radius: 3,
+          speed: 0.01,
+        }}
+      />
     </StyledHome>
   );
 };

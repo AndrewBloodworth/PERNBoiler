@@ -1,3 +1,8 @@
 #testing {
   color: rgba(23, 41, 58, 0.8);
 }
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap");
+
+#main {
+  font-family: "Lato", sans-serif;
+}

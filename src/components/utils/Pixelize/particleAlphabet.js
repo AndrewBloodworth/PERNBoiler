@@ -6,7 +6,9 @@ let particles = {
     this.draw = function (ctx) {
       ctx.save();
       ctx.translate(this.x, this.y);
+
       ctx.fillStyle = "black";
+
       ctx.fillRect(0, 0, this.radius, this.radius);
       ctx.restore();
     };
@@ -27,15 +29,15 @@ let particles = {
     particles.canvas.width = particles.Width;
     particles.canvas.height = particles.Height;
 
-    particles.animate();
+    //particles.animate();
+    const { Diameter, Height, Width } = particles;
+    particles.makeParticles(((Height / Diameter) * (Width / Diameter)) / 5);
 
     return () =>
       function setKeyword(keyword = "Dummy") {
-        const { Diameter, Height, Width } = particles;
-
-        particles.makeParticles(((Height / Diameter) * Width) / Diameter);
         particles.keyword = keyword;
         particles.getPixels(particles.tmpCanvas, particles.tmpCtx);
+        particles.animate();
       };
   },
   currentPos: 0,
@@ -53,16 +55,16 @@ let particles = {
     particles.randomParticles = randomParticles;
   },
   getPixels: function (canvas, ctx) {
-    const { Width, Height, keyword } = particles;
-    const { Radius, Diameter } = particles;
+    const { Radius, Diameter, Width, Height, keyword } = particles;
     const gridX = Diameter;
     const gridY = Diameter;
     canvas.width = Width;
     canvas.height = Height;
 
     ctx.fillStyle = "red";
-    ctx.font = "bold 60px Noto Serif";
-    ctx.fillText(keyword, 0, canvas.height / 2 + 25);
+    ctx.font = `bold ${Height / 1.7}px Lato`;
+    //- ctx.measureText(keyword).height
+    ctx.fillText(keyword, 0, canvas.height / 2);
     let idata = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let buffer32 = new Uint32Array(idata.data.buffer);
 
@@ -86,16 +88,24 @@ let particles = {
         particles.randomParticles.indexOf(p) ===
         particles.expectedParticles.indexOf(pPos)
       ) {
-        p.x += (pPos.x - p.x) * speed;
-        p.y += (pPos.y - p.y) * speed;
+        let difX = pPos.x - p.x;
+        let difY = pPos.y - p.y;
+        // let ease =
+        //   Math.sqrt(Math.pow(difX, 2) * Math.pow(difY, 2)) < 200
+        //     ? (speed += 0.1)
+        //     : (speed += 0.01);
+        speed *= 5;
+        p.x += difX * speed;
+        p.y += difY * speed;
         p.draw(particles.ctx);
       }
     }
   },
   animate: function () {
+    const { Width, Height } = particles;
     requestAnimationFrame(particles.animate);
     particles.ctx.fillStyle = "white";
-    particles.ctx.fillRect(0, 0, particles.Width, particles.Height);
+    particles.ctx.fillRect(0, 0, Width, Height);
     particles.animateParticles();
   },
 };
