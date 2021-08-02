@@ -9,8 +9,9 @@ export const SignIn = ({ signIn }) => {
     username: "",
     password: "",
   });
-  const onChange = (ev) => {
-    setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
+  const onChange = ({ target }) => {
+    const { value, name } = target;
+    setCredentials({ ...credentials, [name]: value });
   };
   const onSubmit = (ev) => {
     ev.preventDefault();
